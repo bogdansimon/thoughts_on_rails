@@ -69,3 +69,4 @@
 # Kamal / Render / Fly-specific state
 /.kamal
 /fly.toml
+/config/credentials/production.key
