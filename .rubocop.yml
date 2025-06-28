@@ -1,8 +1,66 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+plugins:
+  - rubocop-performance
+  - rubocop-rails
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  TargetRubyVersion: 3.3
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+
+# Layout & Formatting
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 2
+
+Layout/LineLength:
+  Enabled: true
+  Max: 100
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+  EnforcedStyle: final_newline
+
+Layout/ArgumentAlignment:
+  Enabled: true
+  EnforcedStyle: with_first_argument
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+  EnforcedStyle: space
+
+# Style Preferences
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/RedundantSelf:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+# Rails Specific
+Rails/HasManyOrHasOneDependent:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: true
+
+# Performance
+Performance/RedundantSortBlock:
+  Enabled: true
+
+Performance/RedundantMerge:
+  Enabled: true
+
+# Lint
+Lint/UselessAssignment:
+  Enabled: true
