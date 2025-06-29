@@ -93,6 +93,9 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
+      railties (>= 6.1)
     drb (2.2.3)
     ed25519 (1.4.0)
     erb (5.0.1)
@@ -111,9 +114,6 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    jbuilder (2.13.0)
-      actionview (>= 5.0.0)
-      activesupport (>= 5.0.0)
     json (2.12.2)
     kamal (2.7.0)
       activesupport (>= 7.0)
@@ -195,6 +195,9 @@ GEM
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.1.16)
+    rack-cors (3.0.0)
+      logger
+      rack (>= 3.0.14)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -334,11 +337,12 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
-  jbuilder
+  dotenv-rails
   kamal
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)
+  rack-cors
   rails (~> 8.0.2)
   rubocop
   rubocop-rails-omakase

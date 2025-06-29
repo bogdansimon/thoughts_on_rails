@@ -32,7 +32,6 @@
 
 # Environment config
 .env
-.env.*
 
 # Spring / bootsnap
 /tmp/cache
