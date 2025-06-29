@@ -69,3 +69,4 @@
 /.kamal
 /fly.toml
 /config/credentials/production.key
+internal_docs
