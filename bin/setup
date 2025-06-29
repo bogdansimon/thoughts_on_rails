@@ -2,10 +2,19 @@
 set -e
 
 VERBOSE=false
+CLEAN=false
 
 for arg in "$@"; do
   if [[ "$arg" == "--verbose" ]]; then
     VERBOSE=true
+  fi
+done
+
+for arg in "$@"; do
+  if [[ "$arg" == "--verbose" ]]; then
+    VERBOSE=true
+  elif [[ "$arg" == "--clean" ]]; then
+    CLEAN=true
   fi
 done
 
@@ -18,8 +27,15 @@ run() {
   fi
 }
 
+if $CLEAN; then
+  echo "== 🧹 Cleaning Docker containers, volumes, and images =="
+  run docker compose down --volumes --remove-orphans
+  run docker image prune -f
+fi
+
+
 echo "== 🚀 Building Docker images =="
-run docker compose build
+run docker compose build 
 
 echo "== 🐳 Starting containers in detached mode =="
 run docker compose up -d
@@ -27,4 +43,5 @@ run docker compose up -d
 echo "== 🗄️ Setting up database (create + migrate) =="
 run docker compose exec web bin/rails db:prepare
 
-echo "== ✅ Done! App is running at http://localhost:3000"
+echo "== ✅ Rails running at http://localhost:3000"
+echo "== ✅ React running at http://localhost:5173"

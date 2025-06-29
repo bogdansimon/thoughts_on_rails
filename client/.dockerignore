@@ -1,0 +1,17 @@
+# Ignore dependencies - they will be installed fresh in the image
+node_modules
+package-lock.json
+
+# Ignore build output (you usually don't want to copy it into container during dev)
+dist
+build
+
+# Ignore config and metadata
+.env
+.env.local
+*.log
+
+# Ignore system files
+.DS_Store
+.vscode
+npm-debug.log
